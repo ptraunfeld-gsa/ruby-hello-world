@@ -31,6 +31,13 @@ post '/echo' do
   `echo #{input}`
 end
 
+
+# Vulnerable route
+get '/employee' do
+  eid = params['eid']  # Gets 'eid' from the query parameters
+  "Employee ID: #{eid}"  # Directly embeds the unescaped 'eid' into the HTTP response
+end
+
 __END__
 
 @@index
